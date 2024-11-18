@@ -76,13 +76,13 @@ WSGI_APPLICATION = 'Taller.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default':  {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nutribalance_db',  # Nombre de la base de datos
-        'USER': 'postgres',  # El nombre de usuario, generalmente es 'postgres'
-        'PASSWORD': 'luani100',  # La contraseña que configuraste durante la instalación de PostgreSQL
-        'HOST': 'localhost',  # El host es localhost
-        'PORT': '5432',  # Puerto por defecto de PostgreSQL
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'nutribalance_db',
+        'USER': 'postgres',
+        'PASSWORD': 'luani100',
+        'HOST': 'database-1.cxya08os4u3t.us-east-2.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
