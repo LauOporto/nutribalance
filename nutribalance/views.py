@@ -230,14 +230,15 @@ def guardar_comida(request):
         emocion = request.POST.get('emocion')
 
         # Crea el registro de comida
+        # El archivo de la imagen se guarda automáticamente en S3 si tu configuración de almacenamiento es correcta
         RegistroComida.objects.create(
             paciente=paciente,
             imagen=imagen,
             emocion=emocion
         )
-        messages.success(request, "Registro de comida guardado exitosamente.")
-        return redirect('registro')  # R
 
+        messages.success(request, "Registro de comida guardado exitosamente.")
+        return redirect('registro')
 
 def historial_comidas(request):
     paciente_id = request.session.get('paciente_id')
