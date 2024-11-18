@@ -15,7 +15,7 @@ from .forms import PacienteForm, LoginForm, DatosPacienteForm, PacienteFotoForm
 from .models import Paciente, RegistroComida
 from .decorators import paciente_login_required
 
-
+@paciente_login_required
 def home(request):
     return render(request, "home.html")
 
