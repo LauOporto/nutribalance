@@ -159,7 +159,7 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME#f"{AWS_ST
 # Configuraciones adicionales de S3
 #AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_S3_FILE_OVERWRITE = False
-#AWS_DEFAULT_ACL = None
+AWS_DEFAULT_ACL = None
 #AWS_S3_VERIFY = True
 
 # Parámetros para los archivos en S3
@@ -168,7 +168,7 @@ AWS_S3_FILE_OVERWRITE = False
 #}
 
 # Configuración de almacenamiento para archivos estáticos y media
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # URLs para archivos estáticos y media
