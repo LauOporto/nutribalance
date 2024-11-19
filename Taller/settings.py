@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nutribalance.apps.NutribalanceConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -149,34 +150,44 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Carpeta donde se guardan física
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME', 'us-east-2')  # Código de región (Ohio)
-AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+AWS_ACCESS_KEY_ID = 'AKIA34AMCZ6CK4RT3VN7'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'nutribalancebucket'
+#AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME', 'us-east-2')  # Código de región (Ohio)
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME#f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 
 # Configuraciones adicionales de S3
-AWS_S3_SIGNATURE_VERSION = 's3v4'
+#AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_S3_VERIFY = True
+#AWS_DEFAULT_ACL = None
+#AWS_S3_VERIFY = True
 
 # Parámetros para los archivos en S3
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
+#AWS_S3_OBJECT_PARAMETERS = {
+    #'CacheControl': 'max-age=86400',
+#}
 
 # Configuración de almacenamiento para archivos estáticos y media
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # URLs para archivos estáticos y media
-STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
-MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/'
+#STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+#MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/'
 
 # Define la ruta donde se recopilarán los archivos estáticos
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
+STORAGES = {
+    
+    "default": {
+        "BACKEND": "storages.backend.s3boto3.S3StaticStorage",
+    },
+    
+    "staticfiles": {
+        "BACKEND" : "storages.backends.s3boto3.S3StaticStorage",
+    },
+    
+}
 
 
