@@ -145,21 +145,21 @@ EMAIL_HOST_USER = 'nutribalanceoficial@gmail.com'
 EMAIL_HOST_PASSWORD = 'opwjstrbzctxbzns'    # PASSWORD GENERADA EN GMAIL PARA ESTE CORREO (TENGO QUE HACERLO DESDE LA PROPIA CUENTA QUE PUSE ARRIBA)
 EMAIL_USE_TLS = True
 
-MEDIA_URL = '/media/'  # La URL base para acceder a los archivos
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Carpeta donde se guardan físicamente
+#MEDIA_URL = '/media/'  # La URL base para acceder a los archivos
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Carpeta donde se guardan físicamente
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 AWS_ACCESS_KEY_ID = 'AKIA34AMCZ6CK4RT3VN7'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'nutribalancebucket'
-#AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME', 'us-east-2')  # Código de región (Ohio)
+AWS_S3_REGION_NAME = 'us-east-2'  # Código de región (Ohio)
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME#f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 
 # Configuraciones adicionales de S3
 #AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
+AWS_DEFAULT_ACL = 'public-read'
 #AWS_S3_VERIFY = True
 
 # Parámetros para los archivos en S3
@@ -190,4 +190,7 @@ STORAGES = {
     
 }
 
+STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static/'
 
+# Archivos de medios
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/'
