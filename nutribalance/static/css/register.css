@@ -41,7 +41,7 @@ a:visited {
     right: 0;
     width: 100%;
     height: 100%;
-    background: url('/static/img/comida.png') no-repeat center center;
+    background: url('../img/comida.png') no-repeat center center;
     background-size: cover;
     opacity: 0.5 !important;
     z-index: -1; /* Mantener la imagen de fondo detrás del contenido */
